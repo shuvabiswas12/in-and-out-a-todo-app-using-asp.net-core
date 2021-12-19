@@ -20,21 +20,21 @@ namespace InAndOut.Migrations
 
             modelBuilder.Entity("InAndOut.Models.Item", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("borrower")
+                    b.Property<string>("Borrower")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("itemName")
+                    b.Property<string>("ItemName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("lender")
+                    b.Property<string>("Lender")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Items");
                 });

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,12 +15,14 @@ namespace InAndOut.Models
         }
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string borrower { get; set; }
+        public string Borrower { get; set; }
         
-        public string lender { get; set; }
+        public string Lender { get; set; }
 
-        public string itemName { get; set; }
+        // this annotation we used for display an item name heders like this "Item Name" istead of "ItemName"
+        [DisplayName("Item name")] 
+        public string ItemName { get; set; }
     }
 }

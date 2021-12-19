@@ -5,8 +5,8 @@
         <div class="col-6">
             <h2 class="text-primary">Borrowed Item List</h2>
         </div>
-        <div class="col-6">
-            <a asp-action="Create" asp-controller="Item">Create new item</a>
+        <div class="col-6 text-right">
+            <a asp-action="Create" asp-controller="Item" class="btn btn-success">Create new item</a>
         </div>
     </div>
     <br />
@@ -24,9 +24,9 @@
                 @foreach(var item in Model)
                 {
                     <tr>
-                        <td width="30%">@item.itemName</td>
-                        <td width="30%">@item.borrower</td>
-                        <td width="30%">@item.lender</td>
+                        <td width="30%">@item.ItemName</td>
+                        <td width="30%">@item.Borrower</td>
+                        <td width="30%">@item.Lender</td>
                     </tr>
                 }
             </tbody>

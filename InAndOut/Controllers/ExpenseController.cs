@@ -1,23 +1,26 @@
 ﻿using InAndOut.Data;
 using InAndOut.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace InAndOut.Controllers
 {
-    public class ItemController : Controller
+    public class ExpenseController : Controller
     {
         // we can use "const" keyword instead of "readonly" keyword.
         private readonly ApplicationDbContext _db;
 
-        public ItemController(ApplicationDbContext db)
+        public ExpenseController(ApplicationDbContext db)
         {
             _db = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Item> objlist = _db.Items;
+            IEnumerable<Expense> objlist = _db.Expenses;
             return View(objlist);
         }
 
@@ -29,7 +32,7 @@ namespace InAndOut.Controllers
 
         // POST - create
         [HttpPost]
-        public IActionResult Create(Item obj)
+        public IActionResult Create(Expense obj)
         {
             _db.Add(obj);
             _db.SaveChanges();
