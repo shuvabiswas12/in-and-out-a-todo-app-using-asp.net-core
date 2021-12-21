@@ -11,6 +11,9 @@ namespace InAndOut.Controllers
         private readonly ApplicationDbContext _db;
 
         public ItemController(ApplicationDbContext db)
+
+
+
         {
             _db = db;
         }

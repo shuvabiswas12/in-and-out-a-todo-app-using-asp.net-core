@@ -34,10 +34,82 @@ namespace InAndOut.Controllers
         [HttpPost]
         public IActionResult Create(Expense obj)
         {
-            _db.Add(obj);
-            _db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _db.Add(obj);
+                _db.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+
+        // GET - delete view
+        public IActionResult Delete(int? id) // this id is a optional ID. that is why we write "int?"
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Expenses.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // POST - delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id) // this id is a optional ID. that is why we write "int?"
+        {
+            var obj = _db.Expenses.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                _db.Expenses.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+        }
+
+
+        // GET Update view
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Expenses.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        // POST - Update
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdatePost(Expense obj)
+        { 
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(obj);
         }
     }
 }

@@ -18,11 +18,11 @@ namespace InAndOut.Models
         public int Id { get; set; }
 
         public string Borrower { get; set; }
-        
+
         public string Lender { get; set; }
 
         // this annotation we used for display an item name heders like this "Item Name" istead of "ItemName"
-        [DisplayName("Item name")] 
+        [DisplayName("Item name")]
         public string ItemName { get; set; }
     }
 }

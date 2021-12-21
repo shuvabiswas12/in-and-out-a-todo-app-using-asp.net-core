@@ -432,3 +432,7 @@ C:\Users\USER-PC\source\repos\InAndOut\InAndOut\bin\Debug\net5.0\zh-Hant\Microso
 C:\Users\USER-PC\source\repos\InAndOut\InAndOut\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\USER-PC\source\repos\InAndOut\InAndOut\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\USER-PC\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Item\Create.cshtml.g.cs
+C:\Users\USER-PC\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Create.cshtml.g.cs
+C:\Users\USER-PC\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Index.cshtml.g.cs
+C:\Users\USER-PC\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Delete.cshtml.g.cs
+C:\Users\USER-PC\source\repos\InAndOut\InAndOut\obj\Debug\net5.0\Razor\Views\Expense\Update.cshtml.g.cs
