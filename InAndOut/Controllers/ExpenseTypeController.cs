@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace InAndOut.Controllers
 {
-    public class ExpenseController : Controller
+    public class ExpenseTypeController : Controller
     {
         // we can use "const" keyword instead of "readonly" keyword.
         private readonly ApplicationDbContext _db;
 
-        public ExpenseController(ApplicationDbContext db)
+        public ExpenseTypeController(ApplicationDbContext db)
         {
             _db = db;
         }
 
         public IActionResult Index()
         {
-            IEnumerable<Expense> objlist = _db.Expenses;
+            IEnumerable<ExpenseType> objlist = _db.ExpenseTypes;
             return View(objlist);
         }
 
@@ -32,11 +32,11 @@ namespace InAndOut.Controllers
 
         // POST - create
         [HttpPost]
-        public IActionResult Create(Expense obj)
+        public IActionResult Create(ExpenseType obj)
         {
             if (ModelState.IsValid)
             {
-                _db.Expenses.Add(obj);
+                _db.ExpenseTypes.Add(obj);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -52,7 +52,7 @@ namespace InAndOut.Controllers
             {
                 return NotFound();
             }
-            var obj = _db.Expenses.Find(id);
+            var obj = _db.ExpenseTypes.Find(id);
             if (obj == null)
             {
                 return NotFound();
@@ -66,14 +66,14 @@ namespace InAndOut.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id) // this id is a optional ID. that is why we write "int?"
         {
-            var obj = _db.Expenses.Find(id);
+            var obj = _db.ExpenseTypes.Find(id);
             if (obj == null)
             {
                 return NotFound();
             }
             else
             {
-                _db.Expenses.Remove(obj);
+                _db.ExpenseTypes.Remove(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -88,7 +88,7 @@ namespace InAndOut.Controllers
                 return NotFound();
             }
 
-            var obj = _db.Expenses.Find(id);
+            var obj = _db.ExpenseTypes.Find(id);
             if (obj == null)
             {
                 return NotFound();
@@ -100,11 +100,11 @@ namespace InAndOut.Controllers
         // POST - Update
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdatePost(Expense obj)
+        public IActionResult UpdatePost(ExpenseType obj)
         { 
             if (ModelState.IsValid)
             {
-                _db.Expenses.Update(obj);
+                _db.ExpenseTypes.Update(obj);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
