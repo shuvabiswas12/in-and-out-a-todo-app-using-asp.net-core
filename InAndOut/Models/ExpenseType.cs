@@ -14,6 +14,4 @@ namespace InAndOut.Models
         [Required]
         public String Name { get; set; }
     }
-
-
 }

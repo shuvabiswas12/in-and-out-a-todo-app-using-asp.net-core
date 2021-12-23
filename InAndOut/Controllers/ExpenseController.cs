@@ -1,6 +1,8 @@
 ﻿using InAndOut.Data;
 using InAndOut.Models;
+using InAndOut.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,22 +23,51 @@ namespace InAndOut.Controllers
         public IActionResult Index()
         {
             IEnumerable<Expense> objlist = _db.Expenses;
+            foreach(var obj in objlist)
+            {
+                obj.ExpenseType = _db.ExpenseTypes.FirstOrDefault(u => u.Id == obj.ExpenseTypeId);
+            }
             return View(objlist);
         }
 
         // GET - create
         public IActionResult Create()
         {
-            return View();
+            // view bag code starts
+            
+            //IEnumerable<SelectListItem> TypeDropDown = _db.ExpenseTypes.Select(i => new SelectListItem
+            //{
+            //    Text = i.Name,
+            //    Value = i.Id.ToString()
+            //});
+
+            //ViewBag.TypeDropDown = TypeDropDown;
+
+            // view bag code ends
+
+
+            // view model code starts
+            ExpenseViewModel expenseViewModel = new ExpenseViewModel()
+            {
+                Expense = new Expense(),
+                TypeDropDown = _db.ExpenseTypes.Select(i => new SelectListItem
+                {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                })
+            };
+            // view model code ends
+
+            return View(expenseViewModel);
         }
 
         // POST - create
         [HttpPost]
-        public IActionResult Create(Expense obj)
+        public IActionResult Create(ExpenseViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                _db.Expenses.Add(obj);
+                _db.Expenses.Add(obj.Expense);
                 _db.SaveChanges();
 
                 return RedirectToAction("Index");
